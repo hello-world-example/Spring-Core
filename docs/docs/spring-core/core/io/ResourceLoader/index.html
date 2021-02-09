@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ResourceLoader ResourceLoader (org.springframework.core.io) interface DefaultResourceLoader (org.springframework.core.io) class ResourcePatternResolver (org.springframework.core.io.support) interface ... ResourceLoader 是一个接口，定义了从 类路径 和 文件系统 中加载资源。 作用主要是 对各种资源路径（location）进行封装，返回 org.springframework.core.io.Resource 接口的实现，通过统一的方式进行访问
+package org.springframework.core.io; import org.springframework.util.ResourceUtils; public interface ResourceLoader { /** Pseudo URL prefix for loading from the class path: &#34;classpath:&#34; */ String CLASSPATH_URL_PREFIX = ResourceUtils.CLASSPATH_URL_PREFIX; Resource getResource(String location); ClassLoader getClassLoader(); } ResourceLoader 有一个默认实现 DefaultResourceLoader，大致策略是：
+ 如果注册的有 ProtocolResolver 并且其返回的资源 非null，直接通过 ProtocolResolver 获取资源 如果以 / 开头，直接返回 ClassPathContextResource 如果以 classpath: 开头，如果是则去掉classpath: 前缀返回对应的 ClassPathResource 否则就把它当做一个 URL 来处理，封装成一个 UrlResource 进行返回 如果当成 URL 处理也失败的话就把对应的资源当成是一个 ClassPathContextResource 进行返回。  "><meta property="og:title" content="" />
+<meta property="og:description" content="ResourceLoader ResourceLoader (org.springframework.core.io) interface DefaultResourceLoader (org.springframework.core.io) class ResourcePatternResolver (org.springframework.core.io.support) interface ... ResourceLoader 是一个接口，定义了从 类路径 和 文件系统 中加载资源。 作用主要是 对各种资源路径（location）进行封装，返回 org.springframework.core.io.Resource 接口的实现，通过统一的方式进行访问
+package org.springframework.core.io; import org.springframework.util.ResourceUtils; public interface ResourceLoader { /** Pseudo URL prefix for loading from the class path: &#34;classpath:&#34; */ String CLASSPATH_URL_PREFIX = ResourceUtils.CLASSPATH_URL_PREFIX; Resource getResource(String location); ClassLoader getClassLoader(); } ResourceLoader 有一个默认实现 DefaultResourceLoader，大致策略是：
+ 如果注册的有 ProtocolResolver 并且其返回的资源 非null，直接通过 ProtocolResolver 获取资源 如果以 / 开头，直接返回 ClassPathContextResource 如果以 classpath: 开头，如果是则去掉classpath: 前缀返回对应的 ClassPathResource 否则就把它当做一个 URL 来处理，封装成一个 UrlResource 进行返回 如果当成 URL 处理也失败的话就把对应的资源当成是一个 ClassPathContextResource 进行返回。  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/ResourceLoader/" />
+
+<title>Resource Loader | Spring-Core</title>
+<link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Spring-Core/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Spring-Core"><span>Spring-Core</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><strong>springframework.core🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/Constants/">Constants</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/SpringVersion/">SpringVersion</a></li>
+</ul>
+</li>
+<li><strong>springframework.core.io🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/Resource/">Resource</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourceLoader/"class=active>ResourceLoader</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/">ResourcePatternResolver</a></li>
+</ul>
+</li>
+<li><strong>springframework.util🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/util/AntPathMatcher/">AntPathMatcher</a></li>
+</ul>
+</li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/cglib/">cglib 🌱</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/objenesis/">objenesis 🌱</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Spring-Core/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Resource Loader</strong>
+
+  <label for="toc-control">
+    <img src="/Spring-Core/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#resourceloader">ResourceLoader</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="resourceloader">ResourceLoader</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ResourceLoader (org.springframework.core.io) interface
+    DefaultResourceLoader (org.springframework.core.io) class
+    ResourcePatternResolver (org.springframework.core.io.support) interface
+        ...
+</code></pre></div><p>ResourceLoader 是一个接口，定义了从 类路径 和 文件系统 中加载资源。
+作用主要是 <strong>对各种资源路径（location）进行封装，返回 <code>org.springframework.core.io.Resource</code> 接口的实现，通过统一的方式进行访问</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> org.springframework.core.io<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.util.ResourceUtils<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ResourceLoader</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#75715e">/** Pseudo URL prefix for loading from the class path: &#34;classpath:&#34; */</span>
+	String CLASSPATH_URL_PREFIX <span style="color:#f92672">=</span> ResourceUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">CLASSPATH_URL_PREFIX</span><span style="color:#f92672">;</span>
+
+	Resource <span style="color:#a6e22e">getResource</span><span style="color:#f92672">(</span>String location<span style="color:#f92672">);</span>
+
+	ClassLoader <span style="color:#a6e22e">getClassLoader</span><span style="color:#f92672">();</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><p>ResourceLoader 有一个默认实现 DefaultResourceLoader，大致策略是：</p>
+<ul>
+<li>如果注册的有 <code>ProtocolResolver</code> 并且其返回的资源 非null，直接通过 <code>ProtocolResolver</code> 获取资源</li>
+<li>如果以 <code>/</code> 开头，直接返回 <code>ClassPathContextResource</code></li>
+<li>如果以 <code>classpath:</code> 开头，如果是则去掉<code>classpath:</code> 前缀返回对应的 <code>ClassPathResource</code></li>
+<li>否则就把它当做一个 <code>URL</code> 来处理，封装成一个 <code>UrlResource</code> 进行返回</li>
+<li>如果当成 <code>URL</code> 处理也失败的话就把对应的资源当成是一个 <code>ClassPathContextResource</code> 进行返回。</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/edit/master/HuGo/content/docs/spring-core/core/io/ResourceLoader.md" target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+<script>
+var images = document.getElementsByTagName("img")
+console.info(images.length)
+for(var i=0; i<images.length; i++){
+  var image = images[i]
+  var src = image.getAttribute("src");
+  if(src.startsWith("-images")){
+    image.setAttribute("src", "../" + src)
+  }
+}
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#resourceloader">ResourceLoader</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

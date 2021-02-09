@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Objenesis Objenesis 是一个小型 Java 库，作用只有一个：实例化一个特定类的对象。
+Java 已经支持使用 Class.newInstance() 动态实例化类的实例。但是类必须拥有一个合适的构造器。有很多场景下不能使用这种方式实例化类，比如：
+ 构造器需要参数 构造器有副作用 构造器会抛异常  因此，在类库中经常会有类必须拥有一个默认构造器的限制。Objenesis 通过绕开对象实例构造器来克服这个限制。
+实例化一个对象而不调用构造器是一个特殊的行为，然而在一些特定的场合是有用的：
+ 序列化，远程调用和持久化 -对象需要实例化并存储为到一个特殊的状态，而没有调用代码 代理，AOP库和Mock对象 -类可以被子类继承而子类不用担心父类的构造器 容器框架，对象可以以非标准的方式被动态实例化  Spring 已经将 Objenesis 纳入到了 spring-core 模块中，所以使用的时候不同单独引用。 Spring 在 采用 cglib 代理的时候，会默认先采用 Objenesis 实例化代理类( @see: ObjenesisCglibAopProxy)
+示例 Hello 类 public class Hello { private static String prefix = &#34;Hello &#34;; { System.out.println(&#34;do &lt;init&gt; Hello&#34;); } public Hello() { System.out.println(&#34;do init Hello&#34;); } public void say(String something) { System."><meta property="og:title" content="" />
+<meta property="og:description" content="Objenesis Objenesis 是一个小型 Java 库，作用只有一个：实例化一个特定类的对象。
+Java 已经支持使用 Class.newInstance() 动态实例化类的实例。但是类必须拥有一个合适的构造器。有很多场景下不能使用这种方式实例化类，比如：
+ 构造器需要参数 构造器有副作用 构造器会抛异常  因此，在类库中经常会有类必须拥有一个默认构造器的限制。Objenesis 通过绕开对象实例构造器来克服这个限制。
+实例化一个对象而不调用构造器是一个特殊的行为，然而在一些特定的场合是有用的：
+ 序列化，远程调用和持久化 -对象需要实例化并存储为到一个特殊的状态，而没有调用代码 代理，AOP库和Mock对象 -类可以被子类继承而子类不用担心父类的构造器 容器框架，对象可以以非标准的方式被动态实例化  Spring 已经将 Objenesis 纳入到了 spring-core 模块中，所以使用的时候不同单独引用。 Spring 在 采用 cglib 代理的时候，会默认先采用 Objenesis 实例化代理类( @see: ObjenesisCglibAopProxy)
+示例 Hello 类 public class Hello { private static String prefix = &#34;Hello &#34;; { System.out.println(&#34;do &lt;init&gt; Hello&#34;); } public Hello() { System.out.println(&#34;do init Hello&#34;); } public void say(String something) { System." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/objenesis/" />
+
+<title>Objenesis | Spring-Core</title>
+<link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Spring-Core/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Spring-Core"><span>Spring-Core</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><strong>springframework.core🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/Constants/">Constants</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/SpringVersion/">SpringVersion</a></li>
+</ul>
+</li>
+<li><strong>springframework.core.io🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/Resource/">Resource</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourceLoader/">ResourceLoader</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/">ResourcePatternResolver</a></li>
+</ul>
+</li>
+<li><strong>springframework.util🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/util/AntPathMatcher/">AntPathMatcher</a></li>
+</ul>
+</li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/cglib/">cglib 🌱</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/objenesis/"class=active>objenesis 🌱</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Spring-Core/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Objenesis</strong>
+
+  <label for="toc-control">
+    <img src="/Spring-Core/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#objenesis">Objenesis</a>
+      <ul>
+        <li><a href="#示例">示例</a>
+          <ul>
+            <li><a href="#hello-类">Hello 类</a></li>
+            <li><a href="#调用方式">调用方式</a></li>
+            <li><a href="#输出">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="objenesis">Objenesis</h1>
+<p>Objenesis 是一个小型 Java 库，作用只有一个：实例化一个特定类的对象。</p>
+<p>Java 已经支持使用 <code>Class.newInstance()</code> 动态实例化类的实例。但是类必须拥有一个合适的构造器。有很多场景下不能使用这种方式实例化类，比如：</p>
+<ul>
+<li>构造器需要参数</li>
+<li>构造器有副作用</li>
+<li>构造器会抛异常</li>
+</ul>
+<p>因此，在类库中经常会有类必须拥有一个默认构造器的限制。Objenesis 通过绕开对象实例构造器来克服这个限制。</p>
+<p>实例化一个对象而不调用构造器是一个特殊的行为，然而在一些特定的场合是有用的：</p>
+<ul>
+<li>序列化，远程调用和持久化 -对象需要实例化并存储为到一个特殊的状态，而没有调用代码</li>
+<li>代理，AOP库和Mock对象 -类可以被子类继承而子类不用担心父类的构造器</li>
+<li>容器框架，对象可以以非标准的方式被动态实例化</li>
+</ul>
+<p>Spring 已经将 Objenesis 纳入到了 <code>spring-core</code> 模块中，所以使用的时候不同单独引用。 Spring 在 采用 cglib 代理的时候，会默认先采用 Objenesis 实例化代理类( @see: <code>ObjenesisCglibAopProxy</code>)</p>
+<h2 id="示例">示例</h2>
+<h3 id="hello-类">Hello 类</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Hello</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> String prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello &#34;</span><span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;do &lt;init&gt; Hello&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Hello</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;do init Hello&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">say</span><span style="color:#f92672">(</span>String something<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>prefix <span style="color:#f92672">+</span> something<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="调用方式">调用方式</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Hello hello <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Hello<span style="color:#f92672">();</span>
+hello<span style="color:#f92672">.</span><span style="color:#a6e22e">say</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;World&#34;</span><span style="color:#f92672">);</span>
+
+hello <span style="color:#f92672">=</span> Hello<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+hello<span style="color:#f92672">.</span><span style="color:#a6e22e">say</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;World&#34;</span><span style="color:#f92672">);</span>
+
+<span style="color:#75715e">// org.springframework.objenesis 包
+</span><span style="color:#75715e"></span>SpringObjenesis objenesis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SpringObjenesis<span style="color:#f92672">();</span>
+ObjectInstantiator<span style="color:#f92672">&lt;</span>Hello<span style="color:#f92672">&gt;</span> instantiator <span style="color:#f92672">=</span> objenesis<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstantiatorOf</span><span style="color:#f92672">(</span>Hello<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+hello <span style="color:#f92672">=</span> instantiator<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+hello<span style="color:#f92672">.</span><span style="color:#a6e22e">say</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;World&#34;</span><span style="color:#f92672">);</span>
+
+<span style="color:#75715e">// sun.reflect 包
+</span><span style="color:#75715e"></span>ReflectionFactory reflectionFactory <span style="color:#f92672">=</span> ReflectionFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getReflectionFactory</span><span style="color:#f92672">();</span>
+Constructor<span style="color:#f92672">&lt;?&gt;</span> constructor <span style="color:#f92672">=</span> reflectionFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">newConstructorForSerialization</span><span style="color:#f92672">(</span>Hello<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> Object<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getConstructor</span><span style="color:#f92672">((</span>Class<span style="color:#f92672">[])</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">));</span>
+hello <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Hello<span style="color:#f92672">)</span> constructor<span style="color:#f92672">.</span><span style="color:#a6e22e">newInstance</span><span style="color:#f92672">();</span>
+hello<span style="color:#f92672">.</span><span style="color:#a6e22e">say</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;World&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><h3 id="输出">输出</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">do</span> &lt;init&gt; Hello
+<span style="color:#66d9ef">do</span> init Hello
+Hello World
+
+<span style="color:#66d9ef">do</span> &lt;init&gt; Hello
+<span style="color:#66d9ef">do</span> init Hello
+Hello World
+
+Hello World
+
+Hello World
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="http://objenesis.org/">官网</a></li>
+<li>
+  <a href="https://blog.csdn.net/codershamo/article/details/52015206">不使用构造方法创建Java对象： objenesis的基本使用方法</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/edit/master/HuGo/content/docs/spring-core/objenesis.md" target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+<script>
+var images = document.getElementsByTagName("img")
+console.info(images.length)
+for(var i=0; i<images.length; i++){
+  var image = images[i]
+  var src = image.getAttribute("src");
+  if(src.startsWith("-images")){
+    image.setAttribute("src", "../" + src)
+  }
+}
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#objenesis">Objenesis</a>
+      <ul>
+        <li><a href="#示例">示例</a>
+          <ul>
+            <li><a href="#hello-类">Hello 类</a></li>
+            <li><a href="#调用方式">调用方式</a></li>
+            <li><a href="#输出">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

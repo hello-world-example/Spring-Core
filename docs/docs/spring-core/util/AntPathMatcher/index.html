@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AntPathMatcher 整个 Spring框架 的路径解析都是按照Ant的风格来的，如： package 匹配，Spring MVC 的路径匹配
+Ant 风格匹配规则 通配符  ? 匹配任何单字符 * 匹配0或者任意数量的字符 ** 匹配0或者更多的目录  最长匹配原则 URL请求/app/dir/file.jsp，现在存在两个路径匹配模式/**/*.jsp和/app/dir/*.jsp，那么会根据模式 /app/dir/*.jsp 来匹配
+示例    URL路径 说明     /app/*.x 所有在app路径下的.x文件   /app/p?ttern /app/pattern 和 /app/pXttern,但是不包括 /app/pttern   /**/example /app/example, /app/foo/example, 和 /example   /app/**/dir/file.* /app/dir/file.jsp, /app/foo/dir/file.html,/app/foo/bar/dir/file.pdf, 和 /app/dir/file.java   /**/*.jsp 任何的 .jsp 文件      Ant 风格 是什么?"><meta property="og:title" content="" />
+<meta property="og:description" content="AntPathMatcher 整个 Spring框架 的路径解析都是按照Ant的风格来的，如： package 匹配，Spring MVC 的路径匹配
+Ant 风格匹配规则 通配符  ? 匹配任何单字符 * 匹配0或者任意数量的字符 ** 匹配0或者更多的目录  最长匹配原则 URL请求/app/dir/file.jsp，现在存在两个路径匹配模式/**/*.jsp和/app/dir/*.jsp，那么会根据模式 /app/dir/*.jsp 来匹配
+示例    URL路径 说明     /app/*.x 所有在app路径下的.x文件   /app/p?ttern /app/pattern 和 /app/pXttern,但是不包括 /app/pttern   /**/example /app/example, /app/foo/example, 和 /example   /app/**/dir/file.* /app/dir/file.jsp, /app/foo/dir/file.html,/app/foo/bar/dir/file.pdf, 和 /app/dir/file.java   /**/*.jsp 任何的 .jsp 文件      Ant 风格 是什么?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/AntPathMatcher/" />
+
+<title>Ant Path Matcher | Spring-Core</title>
+<link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Spring-Core/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Spring-Core"><span>Spring-Core</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><strong>springframework.core🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/Constants/">Constants</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/SpringVersion/">SpringVersion</a></li>
+</ul>
+</li>
+<li><strong>springframework.core.io🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/Resource/">Resource</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourceLoader/">ResourceLoader</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/">ResourcePatternResolver</a></li>
+</ul>
+</li>
+<li><strong>springframework.util🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/util/AntPathMatcher/"class=active>AntPathMatcher</a></li>
+</ul>
+</li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/cglib/">cglib 🌱</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/objenesis/">objenesis 🌱</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Spring-Core/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Ant Path Matcher</strong>
+
+  <label for="toc-control">
+    <img src="/Spring-Core/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#antpathmatcher">AntPathMatcher</a>
+      <ul>
+        <li><a href="#ant-风格匹配规则">Ant 风格匹配规则</a>
+          <ul>
+            <li><a href="#通配符">通配符</a></li>
+            <li><a href="#最长匹配原则">最长匹配原则</a></li>
+            <li><a href="#示例">示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#pathmatcher-的-antpathmatcher-实现">PathMatcher 的 AntPathMatcher 实现</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="antpathmatcher">AntPathMatcher</h1>
+<p>整个 Spring框架 的路径解析都是按照Ant的风格来的，如： package 匹配，Spring MVC 的路径匹配</p>
+<h2 id="ant-风格匹配规则">Ant 风格匹配规则</h2>
+<h3 id="通配符">通配符</h3>
+<ul>
+<li><code>?</code> 匹配任何单字符</li>
+<li><code>*</code> 匹配0或者任意数量的字符</li>
+<li><code>**</code> 匹配0或者更多的目录</li>
+</ul>
+<h3 id="最长匹配原则">最长匹配原则</h3>
+<p>URL请求<code>/app/dir/file.jsp</code>，现在存在两个路径匹配模式<code>/**/*.jsp</code>和<code>/app/dir/*.jsp</code>，那么会根据模式 <code>/app/dir/*.jsp</code> 来匹配</p>
+<h3 id="示例">示例</h3>
+<table>
+<thead>
+<tr>
+<th>URL路径</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/app/*.x</code></td>
+<td>所有在app路径下的.x文件</td>
+</tr>
+<tr>
+<td><code>/app/p?ttern</code></td>
+<td><code>/app/pattern</code> 和 <code>/app/pXttern</code>,但是不包括 <code>/app/pttern</code></td>
+</tr>
+<tr>
+<td><code>/**/example</code></td>
+<td><code>/app/example</code>, <code>/app/foo/example</code>, 和 <code>/example</code></td>
+</tr>
+<tr>
+<td><code>/app/**/dir/file.*</code></td>
+<td><code>/app/dir/file.jsp</code>, <code>/app/foo/dir/file.html</code>,<code>/app/foo/bar/dir/file.pdf</code>, 和 <code>/app/dir/file.java</code></td>
+</tr>
+<tr>
+<td><code>/**/*.jsp</code></td>
+<td>任何的 <code>.jsp</code> 文件</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>
+  <a href="http://www.10tiao.com/html/261/201608/2652126095/1.html">Ant 风格 是什么?</a></p>
+</blockquote>
+<h2 id="pathmatcher-的-antpathmatcher-实现">PathMatcher 的 AntPathMatcher 实现</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> org.springframework.util<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.util.Comparator<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.Map<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * Used by :
+</span><span style="color:#75715e"> * @link org.springframework.core.io.support.PathMatchingResourcePatternResolver
+</span><span style="color:#75715e"> * @link org.springframework.web.servlet.handler.AbstractUrlHandlerMapping
+</span><span style="color:#75715e"> * @link org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver
+</span><span style="color:#75715e"> * @link org.springframework.web.servlet.mvc.WebContentInterceptor
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @since 1.2
+</span><span style="color:#75715e"> * @see AntPathMatcher
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PathMatcher</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isPattern</span><span style="color:#f92672">(</span>String path<span style="color:#f92672">);</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 最常用的方法， 判断匹配模式与路径是否匹配
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">match</span><span style="color:#f92672">(</span>String pattern<span style="color:#f92672">,</span> String path<span style="color:#f92672">);</span>
+
+    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">matchStart</span><span style="color:#f92672">(</span>String pattern<span style="color:#f92672">,</span> String path<span style="color:#f92672">);</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * &#39;/docs/cvs/commit.html&#39; and &#39;/docs/cvs/commit.html -&gt; &#39;&#39;
+</span><span style="color:#75715e">	 * &#39;docs/*&#39; and &#39;/docs/cvs/commit&#39; -&gt; &#39;cvs/commit&#39;
+</span><span style="color:#75715e">	 * &#39;/docs/cvs/*.html&#39; and &#39;/docs/cvs/commit.html&#39; -&gt; &#39;commit.html&#39;
+</span><span style="color:#75715e">	 * &#39;/docs/**&#39; and &#39;/docs/cvs/commit&#39; -&gt; &#39;cvs/commit&#39;
+</span><span style="color:#75715e">	 * &#39;/docs/**\/*.html&#39; and &#39;/docs/cvs/commit.html&#39; -&gt; &#39;cvs/commit.html&#39;
+</span><span style="color:#75715e">	 * &#39;/*.html&#39; and &#39;/docs/cvs/commit.html&#39; -&gt; &#39;docs/cvs/commit.html&#39;
+</span><span style="color:#75715e">	 * &#39;*.html&#39; and &#39;/docs/cvs/commit.html&#39; -&gt; &#39;/docs/cvs/commit.html&#39;
+</span><span style="color:#75715e">	 * &#39;*&#39; and &#39;/docs/cvs/commit.html&#39; -&gt; &#39;/docs/cvs/commit.html&#39;
+</span><span style="color:#75715e">	 */</span>
+	String <span style="color:#a6e22e">extractPathWithinPattern</span><span style="color:#f92672">(</span>String pattern<span style="color:#f92672">,</span> String path<span style="color:#f92672">);</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Spring Web MVC 中经常用到，例子如下：
+</span><span style="color:#75715e">	 * 
+</span><span style="color:#75715e">	 * &#34;/check/{id:[0-9]+}&#34;, &#34;/check/123&#34;  --&gt; {id=123}
+</span><span style="color:#75715e">	 * &#34;/check/{name}&#34;, &#34;/check/kail&#34;  --&gt; {name=kail}
+</span><span style="color:#75715e">	 */</span>
+	Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">extractUriTemplateVariables</span><span style="color:#f92672">(</span>String pattern<span style="color:#f92672">,</span> String path<span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 用来计算最佳匹配
+</span><span style="color:#75715e">	 */</span>
+	Comparator<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getPatternComparator</span><span style="color:#f92672">(</span>String path<span style="color:#f92672">);</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 把两个 匹配模式 合并成 一个
+</span><span style="color:#75715e">	 * (&#34;/**/</span>lo<span style="color:#f92672">?</span>in<span style="color:#f92672">.</span><span style="color:#a6e22e">do</span><span style="color:#e6db74">&#34;, &#34;</span><span style="color:#75715e">/**/</span>login<span style="color:#f92672">.</span><span style="color:#a6e22e">do</span><span style="color:#e6db74">&#34;)  --&gt;  /**/login.do
+</span><span style="color:#e6db74">     * (&#34;</span><span style="color:#75715e">/**/</span><span style="color:#f92672">*.</span><span style="color:#a6e22e">xml</span><span style="color:#e6db74">&#34;, &#34;</span><span style="color:#75715e">/**/</span><span style="color:#f92672">*.</span><span style="color:#a6e22e">properties</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#f92672">)</span>  <span style="color:#f92672">--&gt;</span>  Cannot combine patterns<span style="color:#f92672">:</span> <span style="color:#75715e">/**/</span><span style="color:#f92672">*.</span><span style="color:#a6e22e">xml</span> vs <span style="color:#75715e">/**/</span><span style="color:#f92672">*.</span><span style="color:#a6e22e">properties</span>    
+	 <span style="color:#f92672">*/</span>
+	String <span style="color:#a6e22e">combine</span><span style="color:#f92672">(</span>String pattern1<span style="color:#f92672">,</span> String pattern2<span style="color:#f92672">);</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://blog.csdn.net/qq_21251983/article/details/53034425">SpringMVC路径匹配规则AntPathMatcher</a></li>
+<li>[
+  <a href="https://www.cnblogs.com/leftthen/p/5212221.html">Spring源码解析 - AntPathMatcher</a>]</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/edit/master/HuGo/content/docs/spring-core/util/AntPathMatcher.md" target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+<script>
+var images = document.getElementsByTagName("img")
+console.info(images.length)
+for(var i=0; i<images.length; i++){
+  var image = images[i]
+  var src = image.getAttribute("src");
+  if(src.startsWith("-images")){
+    image.setAttribute("src", "../" + src)
+  }
+}
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#antpathmatcher">AntPathMatcher</a>
+      <ul>
+        <li><a href="#ant-风格匹配规则">Ant 风格匹配规则</a>
+          <ul>
+            <li><a href="#通配符">通配符</a></li>
+            <li><a href="#最长匹配原则">最长匹配原则</a></li>
+            <li><a href="#示例">示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#pathmatcher-的-antpathmatcher-实现">PathMatcher 的 AntPathMatcher 实现</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

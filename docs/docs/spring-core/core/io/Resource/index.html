@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Resource Resource 是 Spring 对于资源文件的统一访问接口。
+package org.springframework.core.io; /** * @since 28.12.2003 * @see #getInputStream() * @see #getURL() * @see #getURI() * @see #getFile() * @see WritableResource * @see ContextResource * @see UrlResource * @see ClassPathResource * @see FileSystemResource * @see PathResource * @see ByteArrayResource * @see InputStreamResource */ public interface Resource extends InputStreamSource { /** * 判断对应的资源是否真的存在 */ boolean exists(); /** * 用于判断对应资源的内容是否可读。 * 需要注意的是当其结果为true的时候，其内容未必真的可读，但如果返回false，则其内容必定不可读 */ boolean isReadable(); /** * 用于判断当前资源是否代表一个已打开的输入流， * 如果结果为true，则表示当前资源的输入流不可多次读取，且在读取以后需要关闭，以防止内存泄露 */ boolean isOpen(); /** * 返回当前资源对应的URL * 如果当前资源不能解析为一个URL则会抛出异常。如ByteArrayResource就不能解析为一个URL */ URL getURL() throws IOException; /** * 返回当前资源对应的URI * 如果当前资源不能解析为一个URI则会抛出异常 * @since 2."><meta property="og:title" content="" />
+<meta property="og:description" content="Resource Resource 是 Spring 对于资源文件的统一访问接口。
+package org.springframework.core.io; /** * @since 28.12.2003 * @see #getInputStream() * @see #getURL() * @see #getURI() * @see #getFile() * @see WritableResource * @see ContextResource * @see UrlResource * @see ClassPathResource * @see FileSystemResource * @see PathResource * @see ByteArrayResource * @see InputStreamResource */ public interface Resource extends InputStreamSource { /** * 判断对应的资源是否真的存在 */ boolean exists(); /** * 用于判断对应资源的内容是否可读。 * 需要注意的是当其结果为true的时候，其内容未必真的可读，但如果返回false，则其内容必定不可读 */ boolean isReadable(); /** * 用于判断当前资源是否代表一个已打开的输入流， * 如果结果为true，则表示当前资源的输入流不可多次读取，且在读取以后需要关闭，以防止内存泄露 */ boolean isOpen(); /** * 返回当前资源对应的URL * 如果当前资源不能解析为一个URL则会抛出异常。如ByteArrayResource就不能解析为一个URL */ URL getURL() throws IOException; /** * 返回当前资源对应的URI * 如果当前资源不能解析为一个URI则会抛出异常 * @since 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/Resource/" />
+
+<title>Resource | Spring-Core</title>
+<link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Spring-Core/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Spring-Core"><span>Spring-Core</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><strong>springframework.core🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/Constants/">Constants</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/SpringVersion/">SpringVersion</a></li>
+</ul>
+</li>
+<li><strong>springframework.core.io🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/Resource/"class=active>Resource</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourceLoader/">ResourceLoader</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/">ResourcePatternResolver</a></li>
+</ul>
+</li>
+<li><strong>springframework.util🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/util/AntPathMatcher/">AntPathMatcher</a></li>
+</ul>
+</li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/cglib/">cglib 🌱</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/objenesis/">objenesis 🌱</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Spring-Core/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Resource</strong>
+
+  <label for="toc-control">
+    <img src="/Spring-Core/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#resource">Resource</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="resource">Resource</h1>
+<p>Resource 是 Spring <strong>对于资源文件的统一访问接口</strong>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> org.springframework.core.io<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @since 28.12.2003
+</span><span style="color:#75715e"> * @see #getInputStream()
+</span><span style="color:#75715e"> * @see #getURL()
+</span><span style="color:#75715e"> * @see #getURI()
+</span><span style="color:#75715e"> * @see #getFile()
+</span><span style="color:#75715e"> * @see WritableResource
+</span><span style="color:#75715e"> * @see ContextResource
+</span><span style="color:#75715e"> * @see UrlResource
+</span><span style="color:#75715e"> * @see ClassPathResource
+</span><span style="color:#75715e"> * @see FileSystemResource
+</span><span style="color:#75715e"> * @see PathResource
+</span><span style="color:#75715e"> * @see ByteArrayResource
+</span><span style="color:#75715e"> * @see InputStreamResource
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Resource</span> <span style="color:#66d9ef">extends</span> InputStreamSource <span style="color:#f92672">{</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 判断对应的资源是否真的存在
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">exists</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 用于判断对应资源的内容是否可读。
+</span><span style="color:#75715e">	 * 需要注意的是当其结果为true的时候，其内容未必真的可读，但如果返回false，则其内容必定不可读
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isReadable</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 用于判断当前资源是否代表一个已打开的输入流，
+</span><span style="color:#75715e">	 * 如果结果为true，则表示当前资源的输入流不可多次读取，且在读取以后需要关闭，以防止内存泄露
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isOpen</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 返回当前资源对应的URL
+</span><span style="color:#75715e">	 * 如果当前资源不能解析为一个URL则会抛出异常。如ByteArrayResource就不能解析为一个URL
+</span><span style="color:#75715e">	 */</span>
+	URL <span style="color:#a6e22e">getURL</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 返回当前资源对应的URI
+</span><span style="color:#75715e">	 * 如果当前资源不能解析为一个URI则会抛出异常
+</span><span style="color:#75715e">	 * @since 2.5
+</span><span style="color:#75715e">	 */</span>
+	URI <span style="color:#a6e22e">getURI</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 返回当前资源对应的File。如果当前资源不能以绝对路径解析为一个File则会抛出异常
+</span><span style="color:#75715e">	 */</span>
+	File <span style="color:#a6e22e">getFile</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 资源文本大小
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">long</span> <span style="color:#a6e22e">contentLength</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 定义该资源后更新的时间戳
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">long</span> <span style="color:#a6e22e">lastModified</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 创建一个资源，相对对该资源未知
+</span><span style="color:#75715e">	 */</span>
+	Resource <span style="color:#a6e22e">createRelative</span><span style="color:#f92672">(</span>String relativePath<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 定义此资源的文件名，通常是最后一个路径的一部分：例如，“myfile.txt”。
+</span><span style="color:#75715e">	 * 如果此类资源没有文件名，则返回 null
+</span><span style="color:#75715e">	 */</span>
+	String <span style="color:#a6e22e">getFilename</span><span style="color:#f92672">();</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * 返回此资源的描述，用于在处理资源错误时输出
+</span><span style="color:#75715e">	 * 鼓励使用该方法的返回值来作为 toString 的实现
+</span><span style="color:#75715e">	 */</span>
+	String <span style="color:#a6e22e">getDescription</span><span style="color:#f92672">();</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>其主要实现有</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Resource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+    ContextResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+    WritableResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        FileSystemResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        PathResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+    AbstractResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        AbstractFileResolvingResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+            UrlResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+            ClassPathResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        InputStreamResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        FileSystemResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        VfsResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        ByteArrayResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+        PathResource <span style="color:#f92672">(</span>org.springframework.core.io<span style="color:#f92672">)</span>
+
+</code></pre></div><p><strong>Resource</strong> 可以单独使用，也可以通过 <strong>ResourceLoader</strong> 使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> org.springframework.core.io.*<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        ResourceLoader resourceLoader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassRelativeResourceLoader<span style="color:#f92672">(</span>Main<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        Resource resource <span style="color:#f92672">=</span> resourceLoader<span style="color:#f92672">.</span><span style="color:#a6e22e">getResource</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/Main.class&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">// class path resource [/Main.class]
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// class path resource [/Main.class]
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">.</span><span style="color:#a6e22e">getDescription</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// true
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// class org.springframework.core.io.ClassRelativeResourceLoader$ClassRelativeContextResource
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// 1314
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">.</span><span style="color:#a6e22e">contentLength</span><span style="color:#f92672">());</span>
+        <span style="color:#75715e">// true
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>resource<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><ul>
+<li>
+  <a href="http://elim.iteye.com/blog/2016305">通过Spring Resource接口获取资源</a></li>
+<li>
+  <a href="https://blog.csdn.net/supportuat/article/details/50931311">Spring ResourceLoader.getResource() &amp; getResources()的理解</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/edit/master/HuGo/content/docs/spring-core/core/io/Resource.md" target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+<script>
+var images = document.getElementsByTagName("img")
+console.info(images.length)
+for(var i=0; i<images.length; i++){
+  var image = images[i]
+  var src = image.getAttribute("src");
+  if(src.startsWith("-images")){
+    image.setAttribute("src", "../" + src)
+  }
+}
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#resource">Resource</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

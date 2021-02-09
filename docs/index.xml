@@ -1,189 +1,173 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction on Template-Hugo</title>
-    <link>https://hello-world-example.github.io/Template-Hugo/</link>
-    <description>Recent content in Introduction on Template-Hugo</description>
+    <title>Spring on Spring-Core</title>
+    <link>https://hello-world-example.github.io/Spring-Core/</link>
+    <description>Recent content in Spring on Spring-Core</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://hello-world-example.github.io/Template-Hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://hello-world-example.github.io/Spring-Core/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>With ToC</title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/example/table-of-contents/with-toc/</link>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Core/_sidebar/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/example/table-of-contents/with-toc/</guid>
-      <description>Caput vino delphine in tamen vias Cognita laeva illo fracta Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
- Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit  Natus quaerere Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
-    </item>
-    
-    <item>
-      <title>Without ToC</title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/example/table-of-contents/without-toc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/example/table-of-contents/without-toc/</guid>
-      <description>At me ipso nepotibus nunc celebratior genus Tanto oblite Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
-Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description>
-    </item>
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>https://hello-world-example.github.io/Template-Hugo/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://hello-world-example.github.io/Template-Hugo/posts/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://hello-world-example.github.io/Template-Hugo/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://hello-world-example.github.io/Template-Hugo/posts/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://hello-world-example.github.io/Template-Hugo/posts/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://hello-world-example.github.io/Template-Hugo/posts/goisforlovers/</guid>
-      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://hello-world-example.github.io/Template-Hugo/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://hello-world-example.github.io/Template-Hugo/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/_sidebar/</guid>
+      <description> springframework.core🌱   Constants  SpringVersion   springframework.core.io🌱   Resource  ResourceLoader  ResourcePatternResolver   springframework.util🌱   AntPathMatcher    cglib 🌱  objenesis 🌱  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/_sidebar/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/cglib/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/_sidebar/</guid>
-      <description>   Example Site
-   Table of Contents
-  With ToC  Without ToC     Collapsed
-  3rd   4th       Shortcodes
-   Buttons
-   Columns
-   Expand
-   Hints
-   Katex
-   Mermaid
-   Tabs   </description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/cglib/</guid>
+      <description>cglib cglib 已纳入 spring-core 模块，包 org.springframework.cglib.proxy。
+入门示例 Callback  Callback (..cglib.proxy) ：空接口  MethodInterceptor (..cglib.proxy)： InvocationHandler (..cglib.proxy)： NoOp (..cglib.proxy)：什么也不做，类似于直接调用目标对象 FixedValue (..cglib.proxy)：不调用 目标方法，而是返回一个固定的值 LazyLoader (..cglib.proxy)： Dispatcher (..cglib.proxy)： ProxyRefDispatcher (..cglib.proxy)：    Read More   CGLib动态代理的介绍及用法（单回调、多回调、不处理、固定值、懒加载）  cglib How To  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/example/collapsed/3rd-level/4th-level/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/__ParameterizedTypeReference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/example/collapsed/3rd-level/4th-level/</guid>
-      <description>4th Level of Menu Caesorum illa tu sentit micat vestes papyriferi Inde aderam facti; Theseus vis de tauri illa peream. Oculos uberaque non regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo; gestanda nitidi, vero? Dum ne pectoraque testantur.
-Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii. Cupiens auctoribus pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae iusto! Sedes ante dum superest extrema.</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/__ParameterizedTypeReference/</guid>
+      <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/example/hidden/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/__SpringProperties/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/example/hidden/</guid>
-      <description>This page is hidden in menu Quondam non pater est dignior ille Eurotas Latent te facies Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
- Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona O fallor in sustinui iussorum equidem.</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/__SpringProperties/</guid>
+      <description>SpringProperties </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/buttons/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/Constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/buttons/</guid>
-      <description>Buttons Buttons are styled links that can lead to local page or external link.
-Example {{&amp;lt; button relref=&amp;#34;/&amp;#34; [class=&amp;#34;...&amp;#34;] &amp;gt;}}Get Home{{&amp;lt; /button &amp;gt;}} {{&amp;lt; button href=&amp;#34;https://github.com/alex-shpak/hugo-book&amp;#34; &amp;gt;}}Contribute{{&amp;lt; /button &amp;gt;}}  Get Home  Contribute  </description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/Constants/</guid>
+      <description>Constants 该类用来获取类中的常量
+package org.springframework.core; import java.lang.reflect.Field; import java.util.*; import org.springframework.util.Assert; import org.springframework.util.ReflectionUtils; /** * @since 16.03.2003 * * 根据常量名获取值 * 根据常量名 前缀/后缀 获取 常量名/值 列表 * 等 */ public class Constants { ... public Constants(Class&amp;lt;?&amp;gt; clazz) { Assert.notNull(clazz, &amp;#34;Class must not be null&amp;#34;); this.className = clazz.getName(); Field[] fields = clazz.getFields(); for (Field field : fields) { // 字段是否由 public static final 修饰  if (ReflectionUtils.isPublicStaticFinal(field)) { String name = field.getName(); try { Object value = field.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/columns/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/Resource/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/columns/</guid>
-      <description>Columns Columns help organize shorter pieces of content horizontally for readability.
-{{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}} Example Left Content Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/Resource/</guid>
+      <description>Resource Resource 是 Spring 对于资源文件的统一访问接口。
+package org.springframework.core.io; /** * @since 28.12.2003 * @see #getInputStream() * @see #getURL() * @see #getURI() * @see #getFile() * @see WritableResource * @see ContextResource * @see UrlResource * @see ClassPathResource * @see FileSystemResource * @see PathResource * @see ByteArrayResource * @see InputStreamResource */ public interface Resource extends InputStreamSource { /** * 判断对应的资源是否真的存在 */ boolean exists(); /** * 用于判断对应资源的内容是否可读。 * 需要注意的是当其结果为true的时候，其内容未必真的可读，但如果返回false，则其内容必定不可读 */ boolean isReadable(); /** * 用于判断当前资源是否代表一个已打开的输入流， * 如果结果为true，则表示当前资源的输入流不可多次读取，且在读取以后需要关闭，以防止内存泄露 */ boolean isOpen(); /** * 返回当前资源对应的URL * 如果当前资源不能解析为一个URL则会抛出异常。如ByteArrayResource就不能解析为一个URL */ URL getURL() throws IOException; /** * 返回当前资源对应的URI * 如果当前资源不能解析为一个URI则会抛出异常 * @since 2.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/expand/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/ResourceLoader/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/expand/</guid>
-      <description>Expand Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example Default {{&amp;lt; expand &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}}  Expand ↕  Markdown content Lorem markdownum insigne&amp;hellip;    With Custom Label {{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}}  Custom Label ...  Markdown content Lorem markdownum insigne.</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/ResourceLoader/</guid>
+      <description>ResourceLoader ResourceLoader (org.springframework.core.io) interface DefaultResourceLoader (org.springframework.core.io) class ResourcePatternResolver (org.springframework.core.io.support) interface ... ResourceLoader 是一个接口，定义了从 类路径 和 文件系统 中加载资源。 作用主要是 对各种资源路径（location）进行封装，返回 org.springframework.core.io.Resource 接口的实现，通过统一的方式进行访问
+package org.springframework.core.io; import org.springframework.util.ResourceUtils; public interface ResourceLoader { /** Pseudo URL prefix for loading from the class path: &amp;#34;classpath:&amp;#34; */ String CLASSPATH_URL_PREFIX = ResourceUtils.CLASSPATH_URL_PREFIX; Resource getResource(String location); ClassLoader getClassLoader(); } ResourceLoader 有一个默认实现 DefaultResourceLoader，大致策略是：
+ 如果注册的有 ProtocolResolver 并且其返回的资源 非null，直接通过 ProtocolResolver 获取资源 如果以 / 开头，直接返回 ClassPathContextResource 如果以 classpath: 开头，如果是则去掉classpath: 前缀返回对应的 ClassPathResource 否则就把它当做一个 URL 来处理，封装成一个 UrlResource 进行返回 如果当成 URL 处理也失败的话就把对应的资源当成是一个 ClassPathContextResource 进行返回。  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/hints/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/hints/</guid>
-      <description>Hints Hint shortcode can be used as hint/alerts/notification block.
-There are 3 colors to choose: info, warning and danger.
-{{&amp;lt; hint [info|warning|danger] &amp;gt;}} **Markdown content** Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa {{&amp;lt; /hint &amp;gt;}} Example Markdown content
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa  Markdown content</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/</guid>
+      <description>ResourcePatternResolver ResourceLoader 提供 classpath 下单资源文件的载入，而 ResourcePatternResolver 提供了多资源文件的载入
+package org.springframework.core.io.support; import java.io.IOException; import org.springframework.core.io.Resource; import org.springframework.core.io.ResourceLoader; /** * @since 1.0.2 * @see org.springframework.core.io.Resource * @see org.springframework.core.io.ResourceLoader * @see org.springframework.context.ApplicationContext * @see org.springframework.context.ResourceLoaderAware */ public interface ResourcePatternResolver extends ResourceLoader { String CLASSPATH_ALL_URL_PREFIX = &amp;#34;classpath*:&amp;#34; // 新增方法，相比 ResourceLoader 可以加载多个资源  Resource[] getResources(String locationPattern) throws IOException; } ResourcePatternResolver 的继承关系如下：
+ResourcePatternResolver (org.springframework.core.io.support) PathMatchingResourcePatternResolver (org.springframework.core.io.support) ApplicationContext (org.springframework.context) ConfigurableApplicationContext (org.springframework.context) AbstractApplicationContext (org.springframework.context.support) ... 以 PathMatchingResourcePatternResolver 为例，getResources 方法的实现如下</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/katex/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/SpringVersion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/katex/</guid>
-      <description>KaTeX KaTeX shortcode let you render math typesetting in markdown document. See KaTeX
-Example {{&amp;lt; katex [display] [class=&amp;#34;text-center&amp;#34;] &amp;gt;}} x = \begin{cases} a &amp;amp;\text{if } b \\ c &amp;amp;\text{if } d \end{cases} {{&amp;lt; /katex &amp;gt;}}     \( x = \begin{cases} a &amp;\text{if } b \\ c &amp;\text{if } d \end{cases} \)    Display Mode Example Here is some inline example: \(\pi(x)\)  , rendered in the same line.</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/SpringVersion/</guid>
+      <description>SpringVersion 该类用来获取 Spring 版本
+实现如下：
+package org.springframework.core; /** * Class that exposes the Spring version. Fetches the * &amp;#34;Implementation-Version&amp;#34; manifest attribute from the jar file. * * @since 1.1 */ public class SpringVersion { public static String getVersion() { Package pkg = SpringVersion.class.getPackage(); return (pkg != null ? pkg.getImplementationVersion() : null); } } 读取的是 spring-core-x.x.x.RELEASE.jar/META-INF/MANIFEST.MF 文件中的 Implementation-Version 内容
+Manifest-Version: 1.0 Implementation-Title: spring-core Implementation-Version: 4.3.10.RELEASE Created-By: 1.8.0_121 (Oracle Corporation) Read More  JDK6 Doc： java.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/mermaid/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/objenesis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/mermaid/</guid>
-      <description>Mermaid Chart  Mermaid is library for generating svg charts and diagrams from text.
-Example {{&amp;lt; mermaid [class=&amp;#34;text-center&amp;#34;]&amp;gt;}} sequenceDiagram Alice-&amp;gt;&amp;gt;Bob: Hello Bob, how are you? alt is sick Bob-&amp;gt;&amp;gt;Alice: Not so good :( else is well Bob-&amp;gt;&amp;gt;Alice: Feeling fresh like a daisy end opt Extra response Bob-&amp;gt;&amp;gt;Alice: Thanks for asking end {{&amp;lt; /mermaid &amp;gt;}}    sequenceDiagram Alice-Bob: Hello Bob, how are you? alt is sick Bob-Alice: Not so good :( else is well Bob-Alice: Feeling fresh like a daisy end opt Extra response Bob-Alice: Thanks for asking end   </description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/objenesis/</guid>
+      <description>Objenesis Objenesis 是一个小型 Java 库，作用只有一个：实例化一个特定类的对象。
+Java 已经支持使用 Class.newInstance() 动态实例化类的实例。但是类必须拥有一个合适的构造器。有很多场景下不能使用这种方式实例化类，比如：
+ 构造器需要参数 构造器有副作用 构造器会抛异常  因此，在类库中经常会有类必须拥有一个默认构造器的限制。Objenesis 通过绕开对象实例构造器来克服这个限制。
+实例化一个对象而不调用构造器是一个特殊的行为，然而在一些特定的场合是有用的：
+ 序列化，远程调用和持久化 -对象需要实例化并存储为到一个特殊的状态，而没有调用代码 代理，AOP库和Mock对象 -类可以被子类继承而子类不用担心父类的构造器 容器框架，对象可以以非标准的方式被动态实例化  Spring 已经将 Objenesis 纳入到了 spring-core 模块中，所以使用的时候不同单独引用。 Spring 在 采用 cglib 代理的时候，会默认先采用 Objenesis 实例化代理类( @see: ObjenesisCglibAopProxy)
+示例 Hello 类 public class Hello { private static String prefix = &amp;#34;Hello &amp;#34;; { System.out.println(&amp;#34;do &amp;lt;init&amp;gt; Hello&amp;#34;); } public Hello() { System.out.println(&amp;#34;do init Hello&amp;#34;); } public void say(String something) { System.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/tabs/</link>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__Base64Utils/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hello-world-example.github.io/Template-Hugo/docs/shortcodes/tabs/</guid>
-      <description>Tabs Tabs let you organize content by context, for example installation instructions for each supported platform.
-{{&amp;lt; tabs &amp;#34;uniqueid&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;MacOS&amp;#34; &amp;gt;}} # MacOS Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Linux&amp;#34; &amp;gt;}} # Linux Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Windows&amp;#34; &amp;gt;}} # Windows Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} Example MacOS MacOS This is tab MacOS content.
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__Base64Utils/</guid>
+      <description>Base64Utils </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__ClassUtils/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__ClassUtils/</guid>
+      <description>ClassUtils </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__FileCopyUtils/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__FileCopyUtils/</guid>
+      <description>FileCopyUtils </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__ReflectionUtils/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/__ReflectionUtils/</guid>
+      <description>ReflectionUtils </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/AntPathMatcher/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/AntPathMatcher/</guid>
+      <description>AntPathMatcher 整个 Spring框架 的路径解析都是按照Ant的风格来的，如： package 匹配，Spring MVC 的路径匹配
+Ant 风格匹配规则 通配符  ? 匹配任何单字符 * 匹配0或者任意数量的字符 ** 匹配0或者更多的目录  最长匹配原则 URL请求/app/dir/file.jsp，现在存在两个路径匹配模式/**/*.jsp和/app/dir/*.jsp，那么会根据模式 /app/dir/*.jsp 来匹配
+示例    URL路径 说明     /app/*.x 所有在app路径下的.x文件   /app/p?ttern /app/pattern 和 /app/pXttern,但是不包括 /app/pttern   /**/example /app/example, /app/foo/example, 和 /example   /app/**/dir/file.* /app/dir/file.jsp, /app/foo/dir/file.html,/app/foo/bar/dir/file.pdf, 和 /app/dir/file.java   /**/*.jsp 任何的 .jsp 文件      Ant 风格 是什么?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/ResourceUtils/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hello-world-example.github.io/Spring-Core/docs/spring-core/util/ResourceUtils/</guid>
+      <description>ResourceUtils package org.springframework.util; import java.io.File; import java.io.FileNotFoundException; import java.net.MalformedURLException; import java.net.URI; import java.net.URISyntaxException; import java.net.URL; import java.net.URLConnection; /** * @since 1.1.5 * @see org.springframework.core.io.Resource * @see org.springframework.core.io.ClassPathResource * @see org.springframework.core.io.FileSystemResource * @see org.springframework.core.io.UrlResource * @see org.springframework.core.io.ResourceLoader */ public abstract class ResourceUtils { public static final String CLASSPATH_URL_PREFIX = &amp;#34;classpath:&amp;#34;; public static final String FILE_URL_PREFIX = &amp;#34;file:&amp;#34;; public static final String JAR_URL_PREFIX = &amp;#34;jar:&amp;#34;; public static final String WAR_URL_PREFIX = &amp;#34;war:&amp;#34;; .</description>
     </item>
     
   </channel>

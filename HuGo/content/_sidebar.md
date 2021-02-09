@@ -1,22 +1,19 @@
 ---
 headless: true
+bookMenuLevels: 1
 ---
 
-- [**Example Site**]({{< relref "/docs/example" >}})
-- [Table of Contents]({{< relref "/docs/example/table-of-contents" >}})
-  - [With ToC]({{< relref "/docs/example/table-of-contents/with-toc" >}})
-  - [Without ToC]({{< relref "/docs/example/table-of-contents/without-toc" >}})
-- [Collapsed]({{< relref "/docs/example/collapsed" >}})
-  - [3rd]({{< relref "/docs/example/collapsed/3rd-level" >}})
-    - [4th]({{< relref "/docs/example/collapsed/3rd-level/4th-level" >}})
-<br />
+* **springframework.core🌱**
+    * [Constants]({{< relref "/docs/spring-core/core/Constants.md" >}})
+    * [SpringVersion]({{< relref "/docs/spring-core/core/SpringVersion.md" >}})
+* **springframework.core.io🌱**
+    * [Resource]({{< relref "/docs/spring-core/core/io/Resource.md" >}})
+    * [ResourceLoader]({{< relref "/docs/spring-core/core/io/ResourceLoader.md" >}})
+    * [ResourcePatternResolver]({{< relref "/docs/spring-core/core/io/ResourcePatternResolver.md" >}})
+* **springframework.util🌱**
+    * [AntPathMatcher]({{< relref "/docs/spring-core/util/AntPathMatcher.md" >}})
+* [cglib 🌱]({{< relref "/docs/spring-core/cglib.md" >}}) 
+* [objenesis 🌱]({{< relref "/docs/spring-core/objenesis.md" >}})
 
-- **Shortcodes**
-- [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
-- [Columns]({{< relref "/docs/shortcodes/columns" >}})
-- [Expand]({{< relref "/docs/shortcodes/expand" >}})
-- [Hints]({{< relref "/docs/shortcodes/hints" >}})
-- [Katex]({{< relref "/docs/shortcodes/katex" >}})
-- [Mermaid]({{< relref "/docs/shortcodes/mermaid" >}})
-- [Tabs]({{< relref "/docs/shortcodes/tabs" >}})
-<br />
+
+

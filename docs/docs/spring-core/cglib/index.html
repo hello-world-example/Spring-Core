@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="cglib cglib 已纳入 spring-core 模块，包 org.springframework.cglib.proxy。
+入门示例 Callback  Callback (..cglib.proxy) ：空接口  MethodInterceptor (..cglib.proxy)： InvocationHandler (..cglib.proxy)： NoOp (..cglib.proxy)：什么也不做，类似于直接调用目标对象 FixedValue (..cglib.proxy)：不调用 目标方法，而是返回一个固定的值 LazyLoader (..cglib.proxy)： Dispatcher (..cglib.proxy)： ProxyRefDispatcher (..cglib.proxy)：    Read More   CGLib动态代理的介绍及用法（单回调、多回调、不处理、固定值、懒加载）  cglib How To  "><meta property="og:title" content="" />
+<meta property="og:description" content="cglib cglib 已纳入 spring-core 模块，包 org.springframework.cglib.proxy。
+入门示例 Callback  Callback (..cglib.proxy) ：空接口  MethodInterceptor (..cglib.proxy)： InvocationHandler (..cglib.proxy)： NoOp (..cglib.proxy)：什么也不做，类似于直接调用目标对象 FixedValue (..cglib.proxy)：不调用 目标方法，而是返回一个固定的值 LazyLoader (..cglib.proxy)： Dispatcher (..cglib.proxy)： ProxyRefDispatcher (..cglib.proxy)：    Read More   CGLib动态代理的介绍及用法（单回调、多回调、不处理、固定值、懒加载）  cglib How To  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/cglib/" />
+
+<title>Cglib | Spring-Core</title>
+<link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/Spring-Core/book.min.d436f463c9471cfab26a8b71cd2f50b6abf5225806391453da4ca111d1834fef.css" integrity="sha256-1Db0Y8lHHPqyaotxzS9Qtqv1IlgGORRT2kyhEdGDT&#43;8=">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/Spring-Core"><span>Spring-Core</span>
+  </a>
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+  <ul>
+<li><strong>springframework.core🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/Constants/">Constants</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/SpringVersion/">SpringVersion</a></li>
+</ul>
+</li>
+<li><strong>springframework.core.io🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/Resource/">Resource</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourceLoader/">ResourceLoader</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/core/io/ResourcePatternResolver/">ResourcePatternResolver</a></li>
+</ul>
+</li>
+<li><strong>springframework.util🌱</strong>
+<ul>
+<li>
+  <a href="/Spring-Core/docs/spring-core/util/AntPathMatcher/">AntPathMatcher</a></li>
+</ul>
+</li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/cglib/"class=active>cglib 🌱</a></li>
+<li>
+  <a href="/Spring-Core/docs/spring-core/objenesis/">objenesis 🌱</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/Spring-Core/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Cglib</strong>
+
+  <label for="toc-control">
+    <img src="/Spring-Core/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#cglib">cglib</a>
+      <ul>
+        <li><a href="#入门示例">入门示例</a></li>
+        <li><a href="#callback">Callback</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="cglib">cglib</h1>
+<p>cglib 已纳入 spring-core 模块，包 <code>org.springframework.cglib.proxy</code>。</p>
+<h2 id="入门示例">入门示例</h2>
+<h2 id="callback">Callback</h2>
+<ul>
+<li><code>Callback</code> (..cglib.proxy) ：空接口
+<ul>
+<li><code>MethodInterceptor</code> (..cglib.proxy)：</li>
+<li><code>InvocationHandler</code> (..cglib.proxy)：</li>
+<li><code>NoOp</code> (..cglib.proxy)：什么也不做，类似于直接调用目标对象</li>
+<li><code>FixedValue</code> (..cglib.proxy)：不调用 目标方法，而是返回一个固定的值</li>
+<li><code>LazyLoader</code> (..cglib.proxy)：</li>
+<li><code>Dispatcher</code> (..cglib.proxy)：</li>
+<li><code>ProxyRefDispatcher</code> (..cglib.proxy)：</li>
+</ul>
+</li>
+</ul>
+<h2 id="read-more">Read More</h2>
+<ul>
+<li>
+  <a href="https://blog.csdn.net/difffate/article/details/70552056">CGLib动态代理的介绍及用法（单回调、多回调、不处理、固定值、懒加载）</a></li>
+<li>
+  <a href="https://github.com/cglib/cglib/wiki/How-To">cglib How To</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/edit/master/HuGo/content/docs/spring-core/cglib.md" target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+<script>
+var images = document.getElementsByTagName("img")
+console.info(images.length)
+for(var i=0; i<images.length; i++){
+  var image = images[i]
+  var src = image.getAttribute("src");
+  if(src.startsWith("-images")){
+    image.setAttribute("src", "../" + src)
+  }
+}
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#cglib">cglib</a>
+      <ul>
+        <li><a href="#入门示例">入门示例</a></li>
+        <li><a href="#callback">Callback</a></li>
+        <li><a href="#read-more">Read More</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
