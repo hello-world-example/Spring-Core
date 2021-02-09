@@ -10,7 +10,7 @@ package org.springframework.core.io; /** * @since 28.12.2003 * @see #getInputStr
 package org.springframework.core.io; /** * @since 28.12.2003 * @see #getInputStream() * @see #getURL() * @see #getURI() * @see #getFile() * @see WritableResource * @see ContextResource * @see UrlResource * @see ClassPathResource * @see FileSystemResource * @see PathResource * @see ByteArrayResource * @see InputStreamResource */ public interface Resource extends InputStreamSource { /** * 判断对应的资源是否真的存在 */ boolean exists(); /** * 用于判断对应资源的内容是否可读。 * 需要注意的是当其结果为true的时候，其内容未必真的可读，但如果返回false，则其内容必定不可读 */ boolean isReadable(); /** * 用于判断当前资源是否代表一个已打开的输入流， * 如果结果为true，则表示当前资源的输入流不可多次读取，且在读取以后需要关闭，以防止内存泄露 */ boolean isOpen(); /** * 返回当前资源对应的URL * 如果当前资源不能解析为一个URL则会抛出异常。如ByteArrayResource就不能解析为一个URL */ URL getURL() throws IOException; /** * 返回当前资源对应的URI * 如果当前资源不能解析为一个URI则会抛出异常 * @since 2." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/Resource/" />
-
+<meta property="article:modified_time" content="2021-02-09T13:55:25+08:00" />
 <title>Resource | Spring-Core</title>
 <link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
 
@@ -274,6 +274,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/commit/302c5524aca2e86908125aa8a8026dece9578975" title='Last modified by kaibin.yang | Feb 9, 2021' target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Feb 9, 2021</span>
+    </a>
+  </div>
 
 
 

@@ -10,7 +10,7 @@ package org.springframework.core; import java.lang.reflect.Field; import java.ut
 package org.springframework.core; import java.lang.reflect.Field; import java.util.*; import org.springframework.util.Assert; import org.springframework.util.ReflectionUtils; /** * @since 16.03.2003 * * 根据常量名获取值 * 根据常量名 前缀/后缀 获取 常量名/值 列表 * 等 */ public class Constants { ... public Constants(Class&lt;?&gt; clazz) { Assert.notNull(clazz, &#34;Class must not be null&#34;); this.className = clazz.getName(); Field[] fields = clazz.getFields(); for (Field field : fields) { // 字段是否由 public static final 修饰  if (ReflectionUtils.isPublicStaticFinal(field)) { String name = field.getName(); try { Object value = field." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/Constants/" />
-
+<meta property="article:modified_time" content="2021-02-09T13:55:25+08:00" />
 <title>Constants | Spring-Core</title>
 <link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
 
@@ -246,6 +246,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/commit/302c5524aca2e86908125aa8a8026dece9578975" title='Last modified by kaibin.yang | Feb 9, 2021' target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Feb 9, 2021</span>
+    </a>
+  </div>
 
 
 

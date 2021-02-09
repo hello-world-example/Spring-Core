@@ -3,17 +3,17 @@ headless: true
 bookMenuLevels: 1
 ---
 
-* **springframework.core🌱**
+- **springframework.core🌱**
     * [Constants]({{< relref "/docs/spring-core/core/Constants.md" >}})
     * [SpringVersion]({{< relref "/docs/spring-core/core/SpringVersion.md" >}})
-* **springframework.core.io🌱**
+- **springframework.core.io🌱**
     * [Resource]({{< relref "/docs/spring-core/core/io/Resource.md" >}})
     * [ResourceLoader]({{< relref "/docs/spring-core/core/io/ResourceLoader.md" >}})
     * [ResourcePatternResolver]({{< relref "/docs/spring-core/core/io/ResourcePatternResolver.md" >}})
-* **springframework.util🌱**
+- **springframework.util🌱**
     * [AntPathMatcher]({{< relref "/docs/spring-core/util/AntPathMatcher.md" >}})
-* [cglib 🌱]({{< relref "/docs/spring-core/cglib.md" >}}) 
-* [objenesis 🌱]({{< relref "/docs/spring-core/objenesis.md" >}})
+- [cglib 🌱]({{< relref "/docs/spring-core/cglib.md" >}}) 
+- [objenesis 🌱]({{< relref "/docs/spring-core/objenesis.md" >}})
 
 
 

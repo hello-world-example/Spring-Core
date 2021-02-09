@@ -12,7 +12,7 @@ package org.springframework.core.io; import org.springframework.util.ResourceUti
  如果注册的有 ProtocolResolver 并且其返回的资源 非null，直接通过 ProtocolResolver 获取资源 如果以 / 开头，直接返回 ClassPathContextResource 如果以 classpath: 开头，如果是则去掉classpath: 前缀返回对应的 ClassPathResource 否则就把它当做一个 URL 来处理，封装成一个 UrlResource 进行返回 如果当成 URL 处理也失败的话就把对应的资源当成是一个 ClassPathContextResource 进行返回。  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hello-world-example.github.io/Spring-Core/docs/spring-core/core/io/ResourceLoader/" />
-
+<meta property="article:modified_time" content="2021-02-09T13:55:25+08:00" />
 <title>Resource Loader | Spring-Core</title>
 <link rel="icon" href="/Spring-Core/favicon.png" type="image/x-icon">
 
@@ -173,6 +173,14 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex justify-between">
 
 
+
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/hello-world-example/Spring-Core/commit/302c5524aca2e86908125aa8a8026dece9578975" title='Last modified by kaibin.yang | Feb 9, 2021' target="_blank" rel="noopener">
+      <img src="/Spring-Core/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>Feb 9, 2021</span>
+    </a>
+  </div>
 
 
 
