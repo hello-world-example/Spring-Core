@@ -102,5 +102,5 @@ public interface PathMatcher {
 
 ## Read More
 
-- [SpringMVC路径匹配规则AntPathMatcher](https://blog.csdn.net/qq_21251983/article/details/53034425)
+- [SpringMVC 路径匹配规则 AntPathMatcher](https://blog.csdn.net/qq_21251983/article/details/53034425)
 - [[Spring源码解析 - AntPathMatcher](https://www.cnblogs.com/leftthen/p/5212221.html)]
