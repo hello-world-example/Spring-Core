@@ -7,6 +7,12 @@
     <groupId>Spring-Core</groupId>
     <artifactId>Spring-Core</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>demo-spring-core</module>
+        <module>demo-spring-draw</module>
+    </modules>
 
 
     <properties>
@@ -24,13 +30,6 @@
 
         <spring.boot.version>2.3.8.RELEASE</spring.boot.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-    </dependencies>
 
 
     <dependencyManagement>
